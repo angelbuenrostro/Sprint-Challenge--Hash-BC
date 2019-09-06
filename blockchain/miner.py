@@ -26,7 +26,8 @@ def proof_of_work(last_proof):
     print("Searching for next proof")
     proof = 0
     #  TODO: Your code here
-    
+    while not self.valid_proof(last_proof, proof):
+        proof += 
 
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
     return proof
@@ -41,10 +42,12 @@ def valid_proof(last_hash, proof):
     """
 
     # TODO: Your code here!
-    if last_hash[-6:] == proof[:6]:
+    guess_hash = hashlib.sha256(proof).hexdigest()
+    if guess_hash[:6] == last_hash[-6:]:
+        print(guess_hash)
+        print(found proof)
         return True
-    else:
-        return False
+    return False
 
 
 if __name__ == '__main__':
