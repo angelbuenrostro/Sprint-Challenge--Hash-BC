@@ -41,7 +41,7 @@ def valid_proof(last_hash, proof):
     """
 
     # TODO: Your code here!
-    if last_hash[:6] == proof[-6]:
+    if last_hash[-6:] == proof[:6]:
         return True
     else:
         return False
