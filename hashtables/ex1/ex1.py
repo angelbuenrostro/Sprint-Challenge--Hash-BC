@@ -9,9 +9,19 @@ from hashtables import (HashTable,
 def get_indices_of_item_weights(weights, length, limit):
     ht = HashTable(16)
 
-    """
-    YOUR CODE HERE
-    """
+    # Insert all weights into hashtable (key - hashweight : value - index)
+    for i in range(0, length):
+        hash_table_insert(ht, weights[i], i)
+        
+    # Search for two keys that sum to limit
+    for i in range(0, length):
+        result = hash_table_retrieve(ht, (limit - weights[i]))
+        if result is not None:
+            if result > i:
+                tuple = (result, i)
+            else:
+                tuple = (i, result)
+            return tuple
 
     return None
 
@@ -21,3 +31,10 @@ def print_answer(answer):
         print(str(answer[0] + " " + answer[1]))
     else:
         print("None")
+
+
+weights = [4, 6, 10, 15, 16]
+limit = 21
+
+answer = get_indices_of_item_weights(weights, 5, limit)
+print(answer)
